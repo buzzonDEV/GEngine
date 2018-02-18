@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 	//инициаизация и создание окна
 	glfw(Width, Height, "BEngin");
 
+
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -17,7 +18,11 @@ int main(int argc, char *argv[])
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//glfwGetWindowSize(window, &Width, &Height);
+		printf("%d\t%d\n",Width, Height);
+
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 }

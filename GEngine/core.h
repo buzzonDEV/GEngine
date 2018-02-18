@@ -1,4 +1,3 @@
-//file is Core.h
 #pragma once
 
 // GLEW
@@ -14,7 +13,7 @@
 
 //Connect local .h
 #include "Config.h"
-#include "Input.h"
+#include "Callback.h"
 
 GLFWwindow* window;
 
@@ -29,23 +28,23 @@ void glfw(GLint w, GLint h, const char name[])
 	printf("glfwInit - Complete!\n");
 
 	////////////////////////////////////////////////////////////////////
-
 	window = glfwCreateWindow(w, h, "BEngin", nullptr, nullptr);
-	if (window == nullptr)
-	{
-		glfwTerminate();
-		printf("Create GLFW window - Failed\n");
-	}
-	else
+	if (window != nullptr)
 	{
 		glfwMakeContextCurrent(window);
 		printf("Create GLFW window - Complete!\n");
 	}
+	else
+	{
+		glfwTerminate();
+		printf("Create GLFW window - Failed\n");
+	}
 
 	////////////////////////////////////////////////////////////////////
-	
+
 	// Set the required callback functions
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetWindowSizeCallback(window, window_size_callback);
 
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
@@ -56,5 +55,4 @@ void glfw(GLint w, GLint h, const char name[])
 	glfwGetFramebufferSize(window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
 }
-
 
