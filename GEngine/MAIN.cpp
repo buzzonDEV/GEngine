@@ -13,11 +13,10 @@ int main(int argc, char *argv[])
 		glfwPollEvents();
 
 		// Render
-		// Clear the colorbuffer
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		//printf("%d\t%d\n",Width, Height);
+		render render;
+		render.clear_color(GR/Width,GB/Height);
 
+ 
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}

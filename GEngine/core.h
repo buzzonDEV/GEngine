@@ -20,6 +20,7 @@ GLFWwindow* window;
 void glfw(GLint w, GLint h, const char name[])
 {
 	glfwInit();
+
 	//glfwWindowHint(GLFW_SAMPLES, 4); // 4x кратный antialiasing
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -56,4 +57,28 @@ void glfw(GLint w, GLint h, const char name[])
 	// Define the viewport dimensions
 	glfwGetFramebufferSize(window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
+}
+
+class render
+{
+public:
+	render();
+	~render();
+	void clear_color(GLfloat r = 0.1f, GLfloat g = 0.1f, GLfloat b = 0.1f, GLfloat a = 1.0f)
+	{
+		// Clear the colorbuffer
+		glClearColor(r, g, b, a);
+		glClear(GL_COLOR_BUFFER_BIT);
+	};
+
+private:
+
+};
+
+render::render()
+{
+}
+
+render::~render()
+{
 }
