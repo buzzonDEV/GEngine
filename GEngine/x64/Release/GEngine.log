@@ -1,5 +1,7 @@
 ﻿  MAIN.cpp
   Generating code
-  All 8 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 9 functions (11.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   GEngine.vcxproj -> D:\VisualStudio\OpenGL\GEngine\x64\Release\GEngine.exe

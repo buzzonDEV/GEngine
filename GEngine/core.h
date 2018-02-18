@@ -20,9 +20,11 @@ GLFWwindow* window;
 void glfw(GLint w, GLint h, const char name[])
 {
 	glfwInit();
+	//glfwWindowHint(GLFW_SAMPLES, 4); // 4x кратный antialiasing
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE); // без рамок
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
 	printf("glfwInit - Complete!\n");
@@ -39,12 +41,12 @@ void glfw(GLint w, GLint h, const char name[])
 		glfwTerminate();
 		printf("Create GLFW window - Failed\n");
 	}
-
 	////////////////////////////////////////////////////////////////////
 
 	// Set the required callback functions
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetWindowSizeCallback(window, window_size_callback);
+	glfwSetCursorPosCallback(window, cursor_position_callback);
 
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
@@ -55,4 +57,3 @@ void glfw(GLint w, GLint h, const char name[])
 	glfwGetFramebufferSize(window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
 }
-
