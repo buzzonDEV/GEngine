@@ -20,5 +20,5 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 void window_size_callback(GLFWwindow* window, int width, int height)
 {
 	glfwGetWindowSize(window, &Width, &Height);
-	//printf("width %d\theight %d\n", Width, Height);
+	// printf("width %d\theight %d\n", Width, Height);
 }
