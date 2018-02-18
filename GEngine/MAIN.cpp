@@ -20,5 +20,4 @@ int main(int argc, char *argv[])
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}
-
 }
