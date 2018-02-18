@@ -86,6 +86,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -119,7 +122,9 @@
     <ClCompile Include="MAIN.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Input.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
