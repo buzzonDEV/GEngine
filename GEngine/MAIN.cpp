@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-	//инициаизация и создание окна
+	//РёРЅРёС†РёР°РёР·Р°С†РёСЏ Рё СЃРѕР·РґР°РЅРёРµ РѕРєРЅР°
 	glfw(Width, Height, "BEngin");
 
 	// Game loop
