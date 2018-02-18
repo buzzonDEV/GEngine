@@ -6,4 +6,4 @@
 #include <gl\glew.h>
 // GLFW
 #include <GLFW\glfw3.h>
-#include <SOIL.h> // для загруски текстур в OpenGL
+#include <SOIL.h> //РґР»СЏ Р·Р°РіСЂСѓСЃРєРё С‚РµРєСЃС‚СѓСЂ РІ OpenGL
