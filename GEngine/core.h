@@ -55,9 +55,7 @@ void glfw(GLint w, GLint h, const char name[])
 	// Initialize GLEW to setup the OpenGL Function pointers
 	glewInit();
 
-	// Define the viewport dimensions
-	glfwGetFramebufferSize(window, &Width, &Height);
-	glViewport(0, 0, Width, Height);
+
 
 	if (line_mod)
 	{

@@ -18,4 +18,8 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 void window_size_callback(GLFWwindow* window, int width, int height)
 {
 	glfwGetWindowSize(window, &Width, &Height);
+
+	// Define the viewport dimensions
+	glfwGetFramebufferSize(window, &Width, &Height);
+	glViewport(0, 0, Width, Height);
 }

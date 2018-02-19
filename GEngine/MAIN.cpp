@@ -62,6 +62,9 @@ int main(int argc, char *argv[])
 
 	glBindVertexArray(0); // отмена лишнего
 
+	// Draw
+
+
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -74,7 +77,7 @@ int main(int argc, char *argv[])
 		//render render;
 		//render.clear_color();
 
-		// Draw
+
 
 		// Draw our first triangle
 		glUseProgram(shaderProgram);
