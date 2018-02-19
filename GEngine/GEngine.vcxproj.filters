@@ -29,8 +29,17 @@
     <ClInclude Include="Callback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="defaulf.flag">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="default.vs">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

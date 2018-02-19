@@ -13,6 +13,7 @@
 
 //Connect local .h
 #include "Config.h"
+#include "Shader.h"
 #include "Callback.h"
 
 GLFWwindow* window;
@@ -31,6 +32,7 @@ void glfw(GLint w, GLint h, const char name[])
 	printf("glfwInit - Complete!\n");
 
 	////////////////////////////////////////////////////////////////////
+	//создание окна
 	window = glfwCreateWindow(w, h, "BEngin", nullptr, nullptr);
 	if (window != nullptr)
 	{
@@ -57,13 +59,12 @@ void glfw(GLint w, GLint h, const char name[])
 	// Define the viewport dimensions
 	glfwGetFramebufferSize(window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
+
 }
 
 class render
 {
 public:
-	render();
-	~render();
 	void clear_color(GLfloat r = 0.1f, GLfloat g = 0.1f, GLfloat b = 0.1f, GLfloat a = 1.0f)
 	{
 		// Clear the colorbuffer
@@ -74,11 +75,3 @@ public:
 private:
 
 };
-
-render::render()
-{
-}
-
-render::~render()
-{
-}
