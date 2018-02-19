@@ -59,6 +59,14 @@ void glfw(GLint w, GLint h, const char name[])
 	glfwGetFramebufferSize(window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
 
+	if (line_mod)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else 
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 }
 
 class render

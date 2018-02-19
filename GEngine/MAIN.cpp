@@ -27,11 +27,15 @@ int main(int argc, char *argv[])
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f,  0.5f, 0.0f
+		0.5f,  0.5f, 0.0f,  // Верхний правый угол
+		0.5f, -0.5f, 0.0f,  // Нижний правый угол
+		-0.5f, -0.5f, 0.0f,  // Нижний левый угол
+		-0.5f,  0.5f, 0.0f   // Верхний левый угол
+	};
+	GLuint indices[] = {  // Помните, что мы начинаем с 0!
+		0, 1, 3,   // Первый треугольник
+		1, 2, 3    // Второй треугольник
 	};
 
 
@@ -39,12 +43,15 @@ int main(int argc, char *argv[])
 	// 0. Копируем массив с вершинами в буфер OpenGL
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
 
 	// 1. Затем установим указатели на вершинные атрибуты
 	//упаковка данных 
@@ -62,26 +69,28 @@ int main(int argc, char *argv[])
 		glfwPollEvents();
 
 		// Render
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		//render render;
 		//render.clear_color();
 
 		// Draw
 
+		// Draw our first triangle
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}
-	//// Properly de-allocate all resources once they've outlived their purpose
-	//glDeleteVertexArrays(1, &VAO);
-	//glDeleteBuffers(1, &VBO);
-	//glDeleteBuffers(1, &EBO);
-	//// Terminate GLFW, clearing any resources allocated by GLFW.
+	// Properly de-allocate all resources once they've outlived their purpose
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
 	return 0;
 }
