@@ -3,7 +3,8 @@
 #include <fstream>
 #include <sstream>
 
-GLuint load_shader(const char * vertex_file_path, const char * fragment_file_path)
+
+void load_shader(GLuint *shaderProgram, const char * vertex_file_path, const char * fragment_file_path)
 {
 
 	// Загружаем код Вершинного Шейдера из файла
@@ -40,18 +41,13 @@ GLuint load_shader(const char * vertex_file_path, const char * fragment_file_pat
 	glShaderSource(fragmentShader, 1, &FragmentSourcePointer, NULL);
 	glCompileShader(fragmentShader);
 
-	//шейдерная программа
-	GLuint shaderProgram = glCreateProgram();
-
 	// присоединение шейдеров
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
+	glAttachShader((*shaderProgram), vertexShader);
+	glAttachShader((*shaderProgram), fragmentShader);
+	glLinkProgram((*shaderProgram));
 
 	// удаление созданных шейдеров
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-
-	return shaderProgram;
 
 }

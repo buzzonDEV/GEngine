@@ -6,7 +6,9 @@ int main(int argc, char *argv[])
 	//инициаизация и создание окна
 	glfw(Width, Height, "BEngin");
 	
-	GLuint shaderProgram  = load_shader("default.vrtx","defaulf.frgm");
+	//Подключение шейдеров;
+	GLuint shaderProgram = glCreateProgram();
+	load_shader(&shaderProgram,"default.vrtx","defaulf.frgm");
 
 	GLfloat vertices[] = {
 		0.5f,  0.5f, 0.0f,  // Верхний правый угол
