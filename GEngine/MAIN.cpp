@@ -5,27 +5,8 @@ int main(int argc, char *argv[])
 {
 	//инициаизация и создание окна
 	glfw(Width, Height, "BEngin");
-
-	//сборка шейдеров
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
-
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
-
-	//шейдерная программа
-	GLuint shaderProgram = glCreateProgram();
-
-	// присоединение шейдеров
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-
-	// удаление созданных шейдеров
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	
+	GLuint shaderProgram  = load_shader("default.vrtx","defaulf.frgm");
 
 	GLfloat vertices[] = {
 		0.5f,  0.5f, 0.0f,  // Верхний правый угол

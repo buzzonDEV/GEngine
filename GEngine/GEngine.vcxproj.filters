@@ -35,10 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="defaulf.flag">
+    <None Include="default.vrtx">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="default.vs">
+    <None Include="defaulf.frgm">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

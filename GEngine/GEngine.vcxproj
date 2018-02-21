@@ -129,8 +129,8 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="defaulf.flag" />
-    <None Include="default.vs" />
+    <None Include="defaulf.frgm" />
+    <None Include="default.vrtx" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
