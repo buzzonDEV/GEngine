@@ -4,50 +4,29 @@
 #include <sstream>
 
 
-void load_shader(GLuint *shaderProgram, const char * vertex_file_path, const char * fragment_file_path)
+void load_shader(GLuint *shaderProgram, const char * file_path, int shader_type)
 {
-
 	// Загружаем код Вершинного Шейдера из файла
-	std::string VertexShaderCode;
-	std::ifstream VertexShaderStream(vertex_file_path, std::ios::in);
-	if (VertexShaderStream.is_open())
+	std::string shaderCode;
+	std::ifstream shaderStream(file_path, std::ios::in);
+	if (shaderStream.is_open())
 	{
 		std::stringstream sstr;
-		sstr << VertexShaderStream.rdbuf();
-		VertexShaderCode = sstr.str();
-		VertexShaderStream.close();
+		sstr << shaderStream.rdbuf();
+		shaderCode = sstr.str();
+		shaderStream.close();
 	}
-
-	// Загружаем код Фрагментного шейдера из файла
-	std::string FragmentShaderCode;
-	std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-	if (FragmentShaderStream.is_open()) {
-		std::stringstream sstr;
-		sstr << FragmentShaderStream.rdbuf();
-		FragmentShaderCode = sstr.str();
-		FragmentShaderStream.close();
-	}
-
-	/////////
 
 	//сборка шейдеров
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	char const * VertexSourcePointer = VertexShaderCode.c_str();
-	glShaderSource(vertexShader, 1, &VertexSourcePointer, NULL);
-	glCompileShader(vertexShader);
-
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	char const * FragmentSourcePointer = FragmentShaderCode.c_str();
-	glShaderSource(fragmentShader, 1, &FragmentSourcePointer, NULL);
-	glCompileShader(fragmentShader);
+	GLuint shader = glCreateShader(shader_type);
+	char const * VertexSourcePointer = shaderCode.c_str();
+	glShaderSource(shader, 1, &VertexSourcePointer, NULL);
+	glCompileShader(shader);
 
 	// присоединение шейдеров
-	glAttachShader((*shaderProgram), vertexShader);
-	glAttachShader((*shaderProgram), fragmentShader);
+	glAttachShader((*shaderProgram), shader);
 	glLinkProgram((*shaderProgram));
 
 	// удаление созданных шейдеров
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-
+	glDeleteShader(shader);
 }

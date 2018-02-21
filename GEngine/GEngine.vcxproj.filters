@@ -38,7 +38,7 @@
     <None Include="default.vrtx">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="defaulf.frgm">
+    <None Include="default.frgm">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

@@ -55,8 +55,6 @@ void glfw(GLint w, GLint h, const char name[])
 	// Initialize GLEW to setup the OpenGL Function pointers
 	glewInit();
 
-
-
 	if (line_mod)
 	{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -66,17 +64,3 @@ void glfw(GLint w, GLint h, const char name[])
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 }
-
-class render
-{
-public:
-	void clear_color(GLfloat r = 0.1f, GLfloat g = 0.1f, GLfloat b = 0.1f, GLfloat a = 1.0f)
-	{
-		// Clear the colorbuffer
-		glClearColor(r, g, b, a);
-		glClear(GL_COLOR_BUFFER_BIT);
-	};
-
-private:
-
-};

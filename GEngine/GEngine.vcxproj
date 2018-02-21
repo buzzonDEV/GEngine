@@ -129,7 +129,7 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="defaulf.frgm" />
+    <None Include="default.frgm" />
     <None Include="default.vrtx" />
     <None Include="packages.config" />
   </ItemGroup>
