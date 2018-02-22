@@ -1,4 +1,2 @@
 ﻿  MAIN.cpp
-d:\visualstudio\opengl\gengine\gengine\main.cpp(63): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-d:\visualstudio\opengl\gengine\gengine\main.cpp(64): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   GEngine.vcxproj -> D:\VisualStudio\OpenGL\GEngine\x64\Debug\GEngine.exe

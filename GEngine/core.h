@@ -20,8 +20,6 @@ GLFWwindow* window;
 void glfw(GLint w, GLint h, const char name[])
 {
 	glfwInit();
-
-	//glfwWindowHint(GLFW_SAMPLES, 4); // 4x кратный antialiasing
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
