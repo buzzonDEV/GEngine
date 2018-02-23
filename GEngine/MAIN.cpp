@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 	// Инициаизация и создание окна
 	glfw(Width, Height, "BEngin");
 	
-	// Подключение шейдеров
+	// Подключение шейдеров;
 	Shader Shader;
 	Shader.load_shader("default.vrtx", GL_VERTEX_SHADER);
 	Shader.load_shader("default.frgm", GL_FRAGMENT_SHADER);
