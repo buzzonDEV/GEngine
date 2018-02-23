@@ -5,14 +5,17 @@
 
 // GLFW
 #include <GLFW\glfw3.h>
-#include <SOIL.h> //для загруски текстур в OpenGL
 
-//connect library C
+// Подключение библиотек С
 #include <stdlib.h>
 #include <stdio.h> 
+#include <string>
+#include <fstream>
+#include <sstream>
 
-//Connect local .h
+// Подключение локальных .h
 #include "Config.h"
+#include "Shader.h"
 #include "Callback.h"
 
 GLFWwindow* window;
@@ -20,17 +23,16 @@ GLFWwindow* window;
 void glfw(GLint w, GLint h, const char name[])
 {
 	glfwInit();
-
-	//glfwWindowHint(GLFW_SAMPLES, 4); // 4x кратный antialiasing
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_DECORATED, GL_FALSE); // без рамок
-	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE); // Режим без рамок
+	glfwWindowHint(GLFW_RESIZABLE, resizable);  // Отвечает за возможность изменения размера окна
 
 	printf("glfwInit - Complete!\n");
 
 	////////////////////////////////////////////////////////////////////
+	//создание окна
 	window = glfwCreateWindow(w, h, "BEngin", nullptr, nullptr);
 	if (window != nullptr)
 	{
@@ -54,31 +56,15 @@ void glfw(GLint w, GLint h, const char name[])
 	// Initialize GLEW to setup the OpenGL Function pointers
 	glewInit();
 
-	// Define the viewport dimensions
-	glfwGetFramebufferSize(window, &Width, &Height);
-	glViewport(0, 0, Width, Height);
-}
 
-class render
-{
-public:
-	render();
-	~render();
-	void clear_color(GLfloat r = 0.1f, GLfloat g = 0.1f, GLfloat b = 0.1f, GLfloat a = 1.0f)
+	if (polygon_mod)
 	{
-		// Clear the colorbuffer
-		glClearColor(r, g, b, a);
-		glClear(GL_COLOR_BUFFER_BIT);
-	};
-
-private:
-
-};
-
-render::render()
-{
-}
-
-render::~render()
-{
+		// Отвечает за режим линейной отрисовки полигонов. т.е рисует только ребра
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else 
+	{
+		// Отвечает за режим полной отрисовки полигонов. т.е рисует полигон полностью с двух сторон
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 }

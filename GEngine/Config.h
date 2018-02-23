@@ -1,8 +1,7 @@
 #pragma once
-
-// Window dimensions
-int Width = 960, Height = 540;
-//window aspect ratio
-int	rw = 16, rh = 9;
-bool LineMod = false;
-double GR,GB;
+// Размеры окна
+int		Width = 960; // Ширина
+int		Height = 540; // Высота
+// Параметры окна
+bool	polygon_mod = false; // Отвечает за режим отрисовки полигонов
+bool	resizable = true; // Отвечает за возможность изменения размера окна 
