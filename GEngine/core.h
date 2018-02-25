@@ -9,6 +9,12 @@
 // GLFW
 #include <GLFW\glfw3.h>
 
+
+//GLM
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+#include <glm\gtc\type_ptr.hpp>
+
 // Подключение библиотек С
 #include <stdlib.h>
 #include <stdio.h> 
@@ -58,7 +64,6 @@ void glfw(GLint w, GLint h, const char name[])
 	glewExperimental = GL_TRUE;
 	// Initialize GLEW to setup the OpenGL Function pointers
 	glewInit();
-
 
 	if (polygon_mod)
 	{
