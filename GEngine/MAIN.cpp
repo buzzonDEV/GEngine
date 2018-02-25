@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	Shader.load_shader("default.vrtx", GL_VERTEX_SHADER);
 	Shader.load_shader("default.frgm", GL_FRAGMENT_SHADER);
 
-	
+	//
 	GLfloat vertices[] = {
 		// Positions          // Colors           // Texture Coords
 		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // Top Right
