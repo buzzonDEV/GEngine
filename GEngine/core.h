@@ -3,6 +3,9 @@
 // GLEW
 #include <gl\glew.h>
 
+//SOIL
+#include <soil.h>
+
 // GLFW
 #include <GLFW\glfw3.h>
 

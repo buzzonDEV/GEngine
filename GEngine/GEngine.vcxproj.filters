@@ -35,11 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="default.vrtx">
-      <Filter>Header Files</Filter>
-    </None>
     <None Include="default.frgm">
-      <Filter>Header Files</Filter>
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="default.vrtx">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -1,2 +1,6 @@
 ﻿  MAIN.cpp
-  GEngine.vcxproj -> D:\VisualStudio\OpenGL\GEngine\x64\Debug\GEngine.exe
+soil.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_DXT.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
+soil.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_helper.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
+soil.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(SOIL.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
+soil.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(stb_image_aug.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
+  GEngine.vcxproj -> D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\GEngine.exe

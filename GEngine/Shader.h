@@ -1,6 +1,8 @@
 ﻿class Shader
 {
 public:
+	GLuint shaderProgram = glCreateProgram();
+
 	/*Загружает код шейдера из файла и подключает к шейдерной программе */
 	void load_shader(const char * file_path, int shader_type)
 	{
@@ -54,7 +56,7 @@ public:
 	}
 
 private:
-	GLuint shaderProgram = glCreateProgram();
+
 };
 
 
