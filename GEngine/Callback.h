@@ -1,8 +1,3 @@
-#pragma once
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-void window_size_callback(GLFWwindow* window, int width, int height);
-void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -12,8 +7,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	//X = xpos;
-	//Y = ypos;
+	mouse.x = xpos;
+	mouse.y = ypos;
 }
 
 void window_size_callback(GLFWwindow* window, int width, int height)

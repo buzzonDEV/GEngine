@@ -1,3 +1,10 @@
+struct point
+{
+	float x;
+	float y;
+};
+
+point mouse;
 #include "Core.h"
 
 int main(int argc, char *argv[])
@@ -35,8 +42,8 @@ int main(int argc, char *argv[])
 
 		// Create transformations
 		glm::mat4 transform;
-		transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(0.0f, 0.0f, 1.0f));
+		transform = glm::translate(transform, glm::vec3(-1+mouse.x/Width*2, -1*(-1 + mouse.y / Height * 2), 0.0f)); // Привязка к мыши
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(0.0f, 0.0f, 1.0f)); // Вращение каждый кадр
 
 		// Get matrix's uniform location and set matrix
 		GLint transformLoc = glGetUniformLocation(Shader.shaderProgram, "transform");
