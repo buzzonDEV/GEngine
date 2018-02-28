@@ -20,9 +20,29 @@
 // Подключение локальных .h
 #include "Config.h"
 #include "Shader.h"
-#include "Callback.h"
 
-class core
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	mouse.x = xpos;
+	mouse.y = ypos;
+}
+
+void window_size_callback(GLFWwindow* window, int width, int height)
+{
+	glfwGetWindowSize(window, &Width, &Height);
+
+	// Define the viewport dimensions
+	glfwGetFramebufferSize(window, &Width, &Height);
+	glViewport(0, 0, Width, Height);
+}
+
+class Core
 {
 public:
 	/*окно*/
@@ -30,10 +50,10 @@ public:
 	/*Конструктор создани окна. Получаемые параметры w - стартовая ширина окна
 													 h - стартоваяя высота окна
 													 name - название процесса*/
-	core(GLint w, GLint h, const char name[]);
+	Core(GLint w, GLint h, const char name[]);
 
 	/*Удаляет отработавшие буферы, переводит в режим терминала*/
-	~core();
+	~Core();
 
 	/*Создает буферы*/
 	void create_beffers()
@@ -106,7 +126,7 @@ private:
 			EBO; //	объектный буфер
 };
 
-core::core(GLint w, GLint h, const char name[])
+Core::Core(GLint w, GLint h, const char name[])
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -154,7 +174,7 @@ core::core(GLint w, GLint h, const char name[])
 	}
 }
 
-core::~core()
+Core::~Core()
 {
 	// Удаление отработавших буферов
 	glDeleteVertexArrays(1, &VAO);

@@ -127,7 +127,6 @@
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Callback.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>

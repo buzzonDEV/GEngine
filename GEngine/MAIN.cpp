@@ -5,15 +5,38 @@ struct point
 };
 
 point mouse;
+
+#pragma once
+// GLEW
+#include <gl\glew.h>
+
+//SOIL
+#include <soil.h>
+
+// GLFW
+#include <GLFW\glfw3.h>
+
+//GLMatrix для работы с матрицами
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+#include <glm\gtc\type_ptr.hpp>
+
+// Подключение библиотек С
+#include <stdlib.h>
+#include <stdio.h> 
+
+// Подключение локальных .h
+#include "Config.h"
+#include "Shader.h"
 #include "Core.h"
 
 int main(int argc, char *argv[])
 {
 	// Инициаизация и создание окна
-	core core(Width, Height, "BEngin");
+	Core Core(Width, Height, "BEngin");
 
 	// Создание и развесовка буферов
-	core.create_beffers();
+	Core.create_beffers();
 	
 	// Подключение шейдеров
 	Shader Shader;
@@ -30,7 +53,7 @@ int main(int argc, char *argv[])
 	Shader.bind_texture();
 
 	// Игровой цикл
-	while (!glfwWindowShouldClose(core.window))
+	while (!glfwWindowShouldClose(Core.window))
 	{
 		// Проверка событий
 		glfwPollEvents(); 
@@ -40,17 +63,17 @@ int main(int argc, char *argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
-		// Create transformations
+		// Трансформация
 		glm::mat4 transform;
 		transform = glm::translate(transform, glm::vec3(-1+mouse.x/Width*2, -1*(-1 + mouse.y / Height * 2), 0.0f)); // Привязка к мыши
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(0.0f, 0.0f, 1.0f)); // Вращение каждый кадр
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(1.0f, 1.0f, 1.0f)); // Вращение каждый кадр
 
 		// Get matrix's uniform location and set matrix
 		GLint transformLoc = glGetUniformLocation(Shader.shaderProgram, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
 		// Обновление изображения
-		core.render();
+		Core.render();
 	}
 	return 0;
 }
