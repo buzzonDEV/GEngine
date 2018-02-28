@@ -8,7 +8,7 @@
 // GLFW
 #include <GLFW\glfw3.h>
 
-//GLMatrix
+//GLMatrix для работы с матрицами
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\type_ptr.hpp>
@@ -16,9 +16,6 @@
 // Подключение библиотек С
 #include <stdlib.h>
 #include <stdio.h> 
-#include <string>
-#include <fstream>
-#include <sstream>
 
 // Подключение локальных .h
 #include "Config.h"
@@ -28,23 +25,30 @@
 class core
 {
 public:
+	/*окно*/
 	GLFWwindow * window;
+	/*Конструктор создани окна. Получаемые параметры w - стартовая ширина окна
+													 h - стартоваяя высота окна
+													 name - название процесса*/
 	core(GLint w, GLint h, const char name[]);
+
+	/*Удаляет отработавшие буферы, переводит в режим терминала*/
 	~core();
 
 	/*Создает буферы*/
 	void create_beffers()
 	{
+		//массив координат объекта
 		GLfloat vertices[] = {
-			// Positions          // Colors           // Texture Coords
-			0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // Top Right
-			0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // Bottom Right
-			-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // Bottom Left
-			-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // Top Left 
+			// Позиции			// Цвета			 // координаты текстур
+			0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // верх право
+			0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // низ право
+			-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // низ лево
+			-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // верх лево
 		};
-		GLuint indices[] = {  // Note that we start from 0!
-			0, 1, 3, // First Triangle
-			1, 2, 3  // Second Triangle
+		GLuint indices[] = {  //связи
+			0, 1, 3, // 1
+			1, 2, 3  // 2
 		};
 
 		// Копируем массив с вершинами в буфер OpenGL
@@ -79,7 +83,6 @@ public:
 	/*Удаляет буверы*/
 	void remove_buffers()
 	{
-		// Properly de-allocate all resources once they've outlived their purpose
 		glDeleteVertexArrays(1, &this->VAO);
 		glDeleteBuffers(1, &this->VBO);
 		glDeleteBuffers(1, &this->EBO);
@@ -88,10 +91,6 @@ public:
 	/*Обновляет изображение*/
 	void render()
 	{
-		// Очистка экрана
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
 		// Отрисовка
 		glBindVertexArray(this->VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -102,7 +101,9 @@ public:
 	}
 
 private:
-	GLuint VBO, VAO, EBO;
+	GLuint  VBO, // вершинный буфер
+			VAO, // вершинный буфер
+			EBO; //	объектный буфер
 };
 
 core::core(GLint w, GLint h, const char name[])
@@ -160,6 +161,6 @@ core::~core()
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
 
-	// Terminate GLFW, clearing any resources allocated by GLFW.
+	// Переход на терминальный режим
 	glfwTerminate();
 }
