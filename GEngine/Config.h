@@ -1,6 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+/*double x y*/
 struct point
 {
 	double x;
@@ -9,11 +10,16 @@ struct point
 
 // Позиция мыши
 extern point	mouse;
+
 // Размеры окна
-extern int		Width;	// Ширина
-extern int		Height;	// Высота
+extern int		Width;	// Ширина главного окна
+extern int		Height;	// Высота главного окна
+
 							// Параметры окна
-extern bool	polygon_mod;	// Отвечает за режим отрисовки полигонов
-extern bool	resizable;		// Отвечает за возможность изменения размера окна  
+extern bool	polygon_mod;	/*	Ррежим отрисовки полигонов 
+								true  - линиями
+								false - полная отрисовка с двух сторон*/
+
+extern bool	resizable;		// Возможность изменения размера окна  
 
 #endif // !CONFIG_H
