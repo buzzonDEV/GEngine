@@ -13,24 +13,25 @@
 #include "Config.h"
 #include "Core.h"
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+void key_callback(GLFWwindow* main_window, int key, int scancode, int action, int mode)
 {
+	/*esc - Закрывает окно*/
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
+		glfwSetWindowShouldClose(main_window, GL_TRUE);
 };
 
-void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+void cursor_position_callback(GLFWwindow* main_window, double xpos, double ypos)
 {
 	mouse.x = xpos;
 	mouse.y = ypos;
 };
 
-void window_size_callback(GLFWwindow* window, int width, int height)
+void window_size_callback(GLFWwindow* main_window, int width, int height)
 {
-	glfwGetWindowSize(window, &Width, &Height);
+	glfwGetWindowSize(main_window, &Width, &Height);
 
 	// Define the viewport dimensions
-	glfwGetFramebufferSize(window, &Width, &Height);
+	glfwGetFramebufferSize(main_window, &Width, &Height);
 	glViewport(0, 0, Width, Height);
 };
 
@@ -47,10 +48,10 @@ Core::Core(GLint w, GLint h, const char name[])
 
 	////////////////////////////////////////////////////////////////////
 	//создание окна
-	window = glfwCreateWindow(w, h, "BEngin", nullptr, nullptr);
-	if (window != nullptr)
+	main_window = glfwCreateWindow(w, h, "BEngin", nullptr, nullptr);
+	if (main_window != nullptr)
 	{
-		glfwMakeContextCurrent(window);
+		glfwMakeContextCurrent(main_window);
 		printf("Create GLFW window - Complete!\n");
 	}
 	else
@@ -61,9 +62,9 @@ Core::Core(GLint w, GLint h, const char name[])
 	////////////////////////////////////////////////////////////////////
 
 	// Set the required callback functions
-	glfwSetKeyCallback(window, key_callback);
-	glfwSetWindowSizeCallback(window, window_size_callback);
-	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetKeyCallback(main_window, key_callback);
+	glfwSetWindowSizeCallback(main_window, window_size_callback);
+	glfwSetCursorPosCallback(main_window, cursor_position_callback);
 
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
@@ -155,5 +156,5 @@ void Core::render()
 	glBindVertexArray(0);
 
 	// Замена экранного буфера
-	glfwSwapBuffers(window);
+	glfwSwapBuffers(main_window);
 }

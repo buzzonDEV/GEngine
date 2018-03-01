@@ -1,20 +1,17 @@
 #ifndef CORE_H
 #define CORE_H
 
-/*Запускается принажатии клавиш клавиатуры*/
-/*esc - exit*/
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-/*Запускается при измениении координат курсора*/
-void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
+/*Запускается при нажатии клавиш*/
+void key_callback(GLFWwindow* main_window, int key, int scancode, int action, int mode);
+/*Запускается при измениении координат курсора в области окна*/
+void cursor_position_callback(GLFWwindow* main_window, double xpos, double ypos);
 /*Запускается при изменеиии размеров экрана*/
-/*Изменяет пространство отрисовки*/
-void window_size_callback(GLFWwindow* window, int width, int height);
+void window_size_callback(GLFWwindow* main_window, int width, int height);
 
 class Core
 {
 public:
-	/*окно*/
-	GLFWwindow * window;
+	GLFWwindow * main_window; // главное окно
 	/*Конструктор создани окна. Получаемые параметры w - стартовая ширина окна
 	h - стартоваяя высота окна
 	name - название процесса*/

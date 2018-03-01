@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	Shader.bind_texture();
 
 	// Игровой цикл
-	while (!glfwWindowShouldClose(Core.window))
+	while (!glfwWindowShouldClose(Core.main_window))
 	{
 		// Проверка событий
 		glfwPollEvents(); 
@@ -57,8 +57,9 @@ int main(int argc, char *argv[])
 
 		// Трансформация
 		glm::mat4 transform;
-		transform = glm::translate(transform, glm::vec3(-1+mouse.x/Width*2, -1*(-1 + mouse.y / Height * 2), 0.0f)); // Привязка к мыши
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(1.0f, 1.0f, 1.0f)); // Вращение каждый кадр
+		transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f)); // Привязка к мыши
+		transform = glm::rotate(transform,  20.0f, glm::vec3(1.0f, 0.0f, 1.0f)); // Вращение каждый кадр
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 3.0f , glm::vec3(1.0f, 1.0f, 0.0f)); // Вращение каждый кадр
 
 		// Get matrix's uniform location and set matrix
 		GLint transformLoc = glGetUniformLocation(Shader.shaderProgram, "transform");
