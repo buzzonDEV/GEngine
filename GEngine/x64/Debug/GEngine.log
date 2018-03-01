@@ -1,9 +1,8 @@
 ﻿  MAIN.cpp
-d:\visualstudio\opengl\gengine\gengine\gengine\core.h(32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\visualstudio\opengl\gengine\gengine\gengine\core.h(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
   Skipping... (no relevant changes detected)
   Core.cpp
+  Config.cpp
 soil.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_DXT.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
 soil.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_helper.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
 soil.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(SOIL.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
