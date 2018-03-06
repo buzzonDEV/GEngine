@@ -21,4 +21,11 @@ extern bool	polygon_mod;	/* Режим отрисовки полигонов
 							   false - полная отрисовка с двух сторон*/
 extern bool	resizable;		// Разрешение изменения размера окна  
 
+// Настройки камеры
+extern const float YAW;
+extern const float PITCH;
+extern const float SPEED;
+extern const float SENSITIVTY;
+extern const float ZOOM;
+
 #endif // !CONFIG_H

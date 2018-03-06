@@ -61,7 +61,7 @@ Core::Core(GLint w, GLint h, const char name[])
 	}
 	////////////////////////////////////////////////////////////////////
 
-	// Set the required callback functions
+	// Функции возвращения
 	glfwSetKeyCallback(main_window, key_callback);
 	glfwSetWindowSizeCallback(main_window, window_size_callback);
 	glfwSetCursorPosCallback(main_window, cursor_position_callback);
@@ -99,42 +99,31 @@ void Core::create_beffers()
 {
 	//массив координат объекта
 	GLfloat vertices[] = {
-		// Позиции			// Цвета			 // координаты текстур
-		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // верх право
-		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // низ право
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // низ лево
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // верх лево
-	};
-	GLuint indices[] = {  //связи
-		0, 1, 3, // 1
-		1, 2, 3  // 2
+		// Позиции				 // координаты текстур
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 	};
 
 	// Копируем массив с вершинами в буфер OpenGL
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
-
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
 	// Упаковка данных 
 	// Атрибут с координатами
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
-	// Атрибут с цветом
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
-	// Атрибуты с текстурой
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(2);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0); // Регистрация VBO в качестве связвнного буфера вершин
+	// Атрибуты с текстурой
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(2);
 
 	glBindVertexArray(0); // Отмена лишнего
 };
@@ -152,8 +141,7 @@ void Core::render()
 {
 	// Отрисовка
 	glBindVertexArray(this->VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
 
 	// Замена экранного буфера
 	glfwSwapBuffers(main_window);

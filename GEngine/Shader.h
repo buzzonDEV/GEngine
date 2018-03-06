@@ -12,13 +12,12 @@ public:
 	void use();
 
 	/*Загружает текстуру*/
-	void load_texture();
+	void load_texture(const char name[]);
 
 	/*Связывание текстур с использованием текстурных блоков*/
 	void bind_texture();
 
 private:
 	GLuint texture1;
-	GLuint texture2;
 };
 #endif // !SHADER_H

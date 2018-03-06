@@ -1,9 +1,8 @@
 ﻿  MAIN.cpp
-  Core.cpp
-  Config.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  Shader.cpp
+  Compiling...
+  Core.cpp
+  Generating Code...
 soil.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_DXT.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
 soil.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(image_helper.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
 soil.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'soil.lib(SOIL.obj)' or at 'D:\VisualStudio\OpenGL\GEngine\GEngine\x64\Debug\SOIL.pdb'; linking object as if no debug info
