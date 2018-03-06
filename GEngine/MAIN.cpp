@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 	// Инициаизация и создание окна
 	Core Core(Width, Height, "BEngin");
 
-		// Setup OpenGL options
-		//glEnable(GL_DEPTH_TEST);
+	// Setup OpenGL options
+	glEnable(GL_DEPTH_TEST);
 
 	// Создание и развесовка буферов
 	Core.create_beffers();
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 	Shader.load_shader("default.frgm", GL_FRAGMENT_SHADER);
 
 	// Загрузка терстуры
-	Shader.load_texture("debugc.png");
+	Shader.load_texture("debugv.png");
 
 	// Запуск шейдерной порграммы
 	Shader.use();	
@@ -55,13 +55,13 @@ int main(int argc, char *argv[])
 
 		// Очистка экрана
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 
 		// Трансформация
 		glm::mat4 transform;
 		transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f)); // Позиционирование
-		//transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 3.0f , glm::vec3(1.0f, 1.0f, 0.0f)); // Вращение каждый кадр
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f , glm::vec3(1.0f, 0.0f, 1.0f)); // Вращение каждый кадр
 
 		// Get matrix's uniform location and set matrix
 		GLint transformLoc = glGetUniformLocation(Shader.shaderProgram, "transform");
