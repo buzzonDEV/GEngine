@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 	Shader.load_shader("default.frgm", GL_FRAGMENT_SHADER);
 
 	// Загрузка терстуры
-	Shader.load_texture("debugv.png");
+	Shader.load_texture("debugc.png");
 
 	// Запуск шейдерной порграммы
 	Shader.use();	

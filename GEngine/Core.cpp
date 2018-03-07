@@ -88,7 +88,6 @@ Core::~Core()
 	// Удаление отработавших буферов
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
 
 	// Переход на терминальный режим
 	glfwTerminate();
@@ -167,7 +166,6 @@ void  Core::remove_buffers()
 {
 	glDeleteVertexArrays(1, &this->VAO);
 	glDeleteBuffers(1, &this->VBO);
-	glDeleteBuffers(1, &this->EBO);
 }
 
 /*Обновляет изображение*/
